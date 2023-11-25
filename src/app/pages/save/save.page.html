@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Titre de la page</ion-title>
+  </ion-toolbar>
+ </ion-header>
+ 
+ <ion-content>
+  <form (submit)="onSubmit()">
+    <label for="type">Type d'opération:</label><br>
+    <input type="text" id="type" name="type" ><br>
+    <label for="libelle">Libellé:</label><br>
+    <input type="text" id="libelle" name="libelle"><br>
+    <label for="montant">Montant:</label><br>
+    <input type="number" id="montant" name="montant"><br>
+    <input type="submit" value="Enregistrer">
+  </form>
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let transaction of transactions">
+      <ion-label>Type: {{ transaction.type }}</ion-label>
+      <ion-label>Libellé: {{ transaction.libelle }}</ion-label>
+      <ion-label>Montant: {{ transaction.montant }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <button (click)="clearLocalStorage()">Vider la liste</button>
+ </ion-content>
