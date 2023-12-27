@@ -2,9 +2,7 @@
   justify-content: center;
   }
 
-  .tab-button {
-  max-width: 200px;
-  }
+
 
   ::ng-deep ion-icon.icon-button {
   background: var(--ion-color-primary-tint)!important;
@@ -31,7 +29,6 @@
   ion-icon {
   height: 50px;
   width: 50px;
-  font-size: 75px;
   }
   }
 
@@ -62,7 +59,7 @@
   --background: transparent;
   }
   .active{
-  color: aqua;
+  color: rgb(76, 141, 255);
   }
   .ng-container{
   margin-top: 25%;

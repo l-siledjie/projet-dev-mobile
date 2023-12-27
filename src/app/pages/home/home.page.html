@@ -1,12 +1,41 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title></ion-title>
-    </ion-toolbar>
-   </ion-header>
-   
-   <ion-content>
-   
-   </ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="hasData()">
+    <ion-item-group *ngFor="let operationGroup of operationGroups">
+      <ion-item-divider>{{ operationGroup.title }}</ion-item-divider>
+      <ion-item *ngFor="let operation of operationGroup.operations">
+        <ion-icon [name]="operation.icon"></ion-icon>
+        <ion-label>{{ operation.label }}</ion-label>
+        <ion-label>{{ operation.amount }}</ion-label>
+        <ion-note slot="end">{{ operation.timestamp | date: 'medium' }}</ion-note>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <ion-item-group>
+    <ion-item-divider>Cumuls</ion-item-divider>
+    <ion-item>
+      <ion-label>Total Journalier</ion-label>
+      <ion-note slot="end">{{ dailyTotal }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Hebdomadaire</ion-label>
+      <ion-note slot="end">{{ weeklyTotal }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Mensuel</ion-label>
+      <ion-note slot="end">{{ monthlyTotal }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Annuel</ion-label>
+      <ion-note slot="end">{{ yearlyTotal }}</ion-note>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { IonModal, ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
+import { OperationService } from '../../services/operation.service';
 
 @Component({
   selector: 'app-tabs',
@@ -8,9 +9,12 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+  selectedType: string;
+  operationLabel: string;
+  amount: number;
 
 
-  constructor( private modalController: ModalController  ) { }
+  constructor( private modalController: ModalController, private operationService: OperationService  ) { }
   @ViewChildren(IonModal) modal!:IonModal
   showGrid = false;
   is_open: boolean = false;
@@ -22,10 +26,14 @@ export class TabsPage implements OnInit {
   }
   onClose() {
     this.is_open = false;
-    this.modal.dismiss();  
+    this.modal.dismiss();
   }
 
-   
+  saveOperation() {
+    this.operationService.addOperation(this.selectedType, this.operationLabel, this.amount);
+    this.onClose();
+  }
+
   ngOnInit() {
   }
 

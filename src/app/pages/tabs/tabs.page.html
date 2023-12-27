@@ -1,15 +1,11 @@
-<ion-tabs>
+  <ion-tabs>
     <ion-icon name="add-circle-outline" class="icon-button inner-center-btn"></ion-icon>
     <ion-tab-bar slot="bottom" class="bottom-tab-bar">
-        <ion-tab-button tab="marketplace" routerLink="/tabs/home" routerLinkActive="active">
-            <ion-icon name="stats-chart-outline"></ion-icon>
-            <ion-label>Aperçu</ion-label>
+        <ion-tab-button tab="home" routerLink="/tabs/home" routerLinkActive="active">
+          <ion-icon name="reader-outline"></ion-icon>
+            <ion-label>Acceuil</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="friends" class="inner-left-btn" routerLink="/tabs/save" routerLinkActive="active">
-            <ion-icon name="cash"></ion-icon>
-            <ion-label>Save</ion-label>
-            <ion-badge color="danger"></ion-badge>
-        </ion-tab-button>
+
         <ion-tab-button class="button-center" (click)="openForm()"> <!--bouton et implementatipn du modal-->
             <ion-fab vertical="bottom" horizontal="end" slot="fixed">
                 <ion-fab-button>
@@ -29,72 +25,34 @@
                         </ion-toolbar>
                     </ion-header>
                     <ion-content>
-                        <ion-row class="ion-justify-content-between">
-                            <ion-segment-button (click)="showGrid = true">
-                                <ion-icon name="exit-outline"></ion-icon>
-                                <ion-label>Expenses</ion-label>
-                            </ion-segment-button>
+                        <form>
+                            <ion-item>
+                              <ion-select placeholder="Sélectionnez le type" [(ngModel)]="selectedType" name="selectedType" label="Type d'opération">
+                                <ion-select-option value="depense">Dépense</ion-select-option>
+                                <ion-select-option value="recette">Recette</ion-select-option>
+                                <ion-select-option value="emprunt">Emprunt</ion-select-option>
+                                <ion-select-option value="pret">Pret</ion-select-option>
+                                <ion-select-option value="epargne">Epargne</ion-select-option>
+                               </ion-select>
 
-                            <ion-segment-button (click)="showGrid = true">
-                                <ion-icon name="enter-outline"></ion-icon>
-                                <ion-label>Income</ion-label>
-                            </ion-segment-button>
+                            </ion-item>
 
-                            <ion-segment-button (click)="showGrid = true">
-                                <ion-icon name="swap-horizontal-outline"></ion-icon>
-                                <ion-label>Transfer</ion-label>
-                            </ion-segment-button>
-                        </ion-row>
-                        <ng-container *ngIf="showGrid">
-                            <ion-grid>
-                                <ion-row class="row2">
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Shopping</ion-button>
-                                    </ion-col>
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline" >Food</ion-button>
-
-                                    </ion-col>
-                                </ion-row>
-                                <ion-row class="row2">
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Social</ion-button>
-                                    </ion-col>
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Car</ion-button>
-                                    </ion-col>
-                                </ion-row>
-                                <ion-row class="row2">
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Telephone</ion-button>
-                                    </ion-col>
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Health</ion-button>
-                                    </ion-col>
-                                </ion-row>
-                                <ion-row class="row2">
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Clothing</ion-button>
-                                    </ion-col>
-                                    <ion-col size="6" class="ion-text-center">
-                                        <ion-button fill="outline">Snacks</ion-button>
-                                    </ion-col>
-                                </ion-row>
-                            </ion-grid>
-                        </ng-container>
+                            <ion-item>
+                              <ion-input label="Libellé de l'opération" [(ngModel)]="operationLabel" name="operationLabel"></ion-input>
+                             </ion-item>
+                             <ion-item>
+                              <ion-input label="Montant" type="number" [(ngModel)]="amount" name="amount"></ion-input>
+                             </ion-item>
+                            <ion-button expand="full" (click)="saveOperation()">Enregistrer</ion-button>
+                        </form>
                     </ion-content>
                 </ng-template>
             </ion-modal>
         </ion-tab-button>
-        <ion-tab-button tab="notifications" class="inner-right-btn" routerLink="/tabs/emprunt"
-            routerLinkActive="active">
-            <ion-icon name="logo-usd"></ion-icon>
-            <ion-label>Emprunt</ion-label>
-            <ion-badge></ion-badge>
-        </ion-tab-button>
-        <ion-tab-button tab="settings" routerLink="/tabs/epargne" routerLinkActive="active">
-            <ion-icon name="wallet"></ion-icon>
-            <ion-label>Epargne</ion-label>
+
+        <ion-tab-button tab="" routerLink="/tabs/epargne" routerLinkActive="active">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+            <ion-label>Statistiques</ion-label>
         </ion-tab-button>
     </ion-tab-bar>
-</ion-tabs>
+  </ion-tabs>
