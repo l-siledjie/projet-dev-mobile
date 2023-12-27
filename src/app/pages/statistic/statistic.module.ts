@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { EmpruntPageRoutingModule } from './emprunt-routing.module';
-
-import { EmpruntPage } from './emprunt.page';
-
+import { StatisticPageRoutingModule } from './statistic-routing.module';
+import { StatisticPage } from './statistic.page';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EmpruntPageRoutingModule
+    StatisticPageRoutingModule
   ],
-  declarations: [EmpruntPage]
+  declarations: [StatisticPage]
 })
-export class EmpruntPageModule {}
+export class StatisticPageModule {}

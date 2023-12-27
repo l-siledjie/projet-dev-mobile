@@ -34,17 +34,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'save',
-    loadChildren: () => import('./pages/save/save.module').then( m => m.SavePageModule)
+    path: 'statistic',
+    loadChildren: () => import('./pages/statistic/statistic.module').then( m => m.StatisticPageModule)
   },
-  {
-    path: 'emprunt',
-    loadChildren: () => import('./pages/emprunt/emprunt.module').then( m => m.EmpruntPageModule)
-  },
-  {
-    path: 'epargne',
-    loadChildren: () => import('./pages/epargne/epargne.module').then( m => m.EpargnePageModule)
-  },
+
+
 ];
 
 @NgModule({

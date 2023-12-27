@@ -12,20 +12,13 @@ const routes: Routes = [
           import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
-        path: 'save',
+        path: 'statistic',
         loadChildren: () =>
-          import('../save/save.module').then((m) => m.SavePageModule),
+          import('../statistic/statistic.module').then(
+            (m) => m.StatisticPageModule
+          ),
       },
-      {
-        path: 'epargne',
-        loadChildren: () =>
-          import('../epargne/epargne.module').then((m) => m.EpargnePageModule),
-      },
-      {
-        path: 'emprunt',
-        loadChildren: () =>
-          import('../emprunt/emprunt.module').then((m) => m.EmpruntPageModule),
-      },
+
       { path: '', redirectTo: '/tabs/acceuil', pathMatch: 'full' },
     ],
   },
