@@ -1,5 +1,53 @@
 <ion-app>
   <ion-menu contentId="main-content">
+    <ion-content>
+      <h1>Menu</h1>
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="../assets/icon/images/001.png" alt="logo">
+        <ion-label>
+          <h2>M. Hitman</h2>
+          <p>Angular Developer</p>
+        </ion-label>
+      </div>
+      <div class="action-button">
+        <ion-button>
+          <ion-icon  slot="start" name="add" ></ion-icon> Add Branch
+        </ion-button>
+      </div>
+      <ion-list class="menu-items"  lines="none">
+        <ion-item>
+          <ion-icon name="pie-chart-outline"></ion-icon>Dashboard
+        </ion-item>
+        <ion-item  class="active" >
+            <ion-icon name="flash" ></ion-icon>Live sessions
+        </ion-item>
+        <ion-item>
+          <ion-icon name="settings" ></ion-icon>Settings
+        </ion-item>
+        <ion-item>
+          <ion-icon name="information-circle" ></ion-icon>About
+        </ion-item>
+        <ion-item>
+          <ion-icon name="log-out" ></ion-icon>Logout
+        </ion-item>
+        <ion-item>
+          <ion-icon name="help-circle" ></ion-icon>Help
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail" ></ion-icon>Contact
+        </ion-item>
+      </ion-list>
+    </ion-content>
+   </ion-menu>
+
+   <ion-router-outlet id="main-content"></ion-router-outlet>
+
+</ion-app>
+
+
+
+<!--
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
@@ -28,8 +76,7 @@
       <ion-list-header>Appearance</ion-list-header>
   <ion-list [inset]="true">
     <ion-item>
-<!--      <ion-toggle [(ngModel)]="themeToggle" (ionChange)="toggleChange($event)">Dark Mode</ion-toggle> -->
-    </ion-item>
+ </ion-item>
   </ion-list>
 
   <ion-list [inset]="true">
@@ -39,8 +86,5 @@
     </ion-item>
   </ion-list>
     </ion-content>
-   </ion-menu>
 
-   <ion-router-outlet id="main-content"></ion-router-outlet>
-
-</ion-app>
+-->
