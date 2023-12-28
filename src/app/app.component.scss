@@ -1,4 +1,4 @@
-*{
+* {
   font-family: lato;
 }
 
@@ -7,11 +7,11 @@
   width: 350px;
   background: #4C8DFF;
   background: linear-gradient(90deg, #4C8DFF 0%, #4C8DFF 100%);
-  box-shadow: 0px 1px 10px rgba($color: #000000, $alpha: 1.0);
+  box-shadow: 0px 1px 10px rgba(98,140,255,0.5);
   transform: rotate(-15deg);
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 50px;
   margin-left: -18px;
-  margin-top: -50px;
+  margin-top: -80px;
   margin-bottom: 60px;
 }
 .header-content{
