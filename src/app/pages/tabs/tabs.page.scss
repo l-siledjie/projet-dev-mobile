@@ -21,7 +21,7 @@
   }
 
   ion-tab-button {
-  --background: beige;
+  --background: rgba(245, 245, 220, 0);
   }
 
   .button-center {
@@ -34,7 +34,7 @@
 
   ion-tab-bar {
   &:before {
-  box-shadow: 0 387px 0 300px beige;
+  box-shadow: 0 387px 0 300px rgba(255, 255, 255, 0);
   position: absolute;
   margin-top: -48px;
   padding: 56px;

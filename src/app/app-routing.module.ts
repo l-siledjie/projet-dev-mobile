@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomePage } from './pages/home/home.page';
+import { StatisticPage } from './pages/statistic/statistic.page';
 
 const routes: Routes = [
 
@@ -37,7 +39,10 @@ const routes: Routes = [
     path: 'statistic',
     loadChildren: () => import('./pages/statistic/statistic.module').then( m => m.StatisticPageModule)
   },
-
+  {
+    path: 'statistics',
+    loadChildren: () => import('./pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
+  },
 
 ];
 

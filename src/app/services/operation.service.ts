@@ -25,13 +25,29 @@ export class OperationService {
       amount,
       timestamp: new Date().toISOString()
     };
+
     operations.push(operation);
     localStorage.setItem('operations', JSON.stringify(operations));
+
   }
 
   getOperationsByType(type: string): any[] {
     const operations = this.getOperations();
     return operations.filter(operation => operation.type === type);
   }
-  
+
+  recalculateWalletScore(): number {
+    const operations = this.getOperations();
+    const currentYear = new Date().getFullYear();
+
+    const walletScore = operations.reduce((score, operation) => {
+      if (operation.type === 'recette' || operation.type === 'emprunt') {
+        return score + operation.amount;
+      } else {
+        return score - operation.amount;
+      }
+    }, 0);
+
+    return walletScore;
+  }
 }

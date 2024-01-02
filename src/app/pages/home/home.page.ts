@@ -18,11 +18,19 @@ export class HomePage {
   weeklyTotal: number = 0;
   monthlyTotal: number = 0;
   yearlyTotal: number = 0;
+  score: number = 0;
+
+  dayTotals: number[] = [0, 0, 0, 0, 0];
+  weekTotals: number[] = [0, 0, 0, 0, 0];
+  monthTotals: number[] = [0, 0, 0, 0, 0];
+  yearTotals: number[] = [0, 0, 0, 0, 0];
+  typeTotals: any = {};
 
   constructor(private operationService: OperationService) {}
 
   ionViewWillEnter() {
     this.loadOperations();
+    this.recalculateWalletScore();
   }
 
   loadOperations() {
@@ -35,49 +43,138 @@ export class HomePage {
     ];
 
     this.calculateTotals();
+    this.calculTotals();
   }
 
   calculateTotals() {
+    this.operationGroups.forEach((operate) => {
+      const type = operate.title.toLowerCase();
+
+      if (operate.operations) {
+        this.typeTotals[type] = {
+          day: this.calculateTotalByPeriod('day', operate),
+          week: this.calculateTotalByPeriod('week', operate),
+          month: this.calculateTotalByPeriod('month', operate),
+          year: this.calculateTotalByPeriod('year', operate),
+        };
+      }
+    });
+  }
+
+  calculateTotalByPeriod(period: string, operationGroup: any): number {
+    if (operationGroup.operations) {
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = currentDate.getMonth();
+      const currentWeek = this.getWeekNumber(currentDate);
+      const currentDay = currentDate.getDate();
+
+      switch (period) {
+        case 'day':
+          return this.calculateTotalForPeriod(operationGroup.operations, 'day', currentDay);
+        case 'week':
+          return this.calculateTotalForPeriod(operationGroup.operations, 'week', currentWeek);
+        case 'month':
+          return this.calculateTotalForPeriod(operationGroup.operations, 'month', currentMonth);
+        case 'year':
+          return this.calculateTotalForPeriod(operationGroup.operations, 'year', currentYear);
+        default:
+          return 0;
+      }
+    }
+    return 0;
+  }
+
+  calculateTotalForPeriod(operations: any[], period: string, value: number): number {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    return operations
+      .filter((operation) => this.isInPeriod(operation.timestamp, period, value, currentYear))
+      .reduce((sum, operation) => sum + operation.amount, 0);
+  }
+
+
+  calculTotals() {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     const currentWeek = this.getWeekNumber(currentDate);
     const currentDay = currentDate.getDate();
 
-    this.dailyTotal = this.calculateTotalByPeriod('day', currentDay);
-    this.weeklyTotal = this.calculateTotalByPeriod('week', currentWeek);
-    this.monthlyTotal = this.calculateTotalByPeriod('month', currentMonth);
-    this.yearlyTotal = this.calculateTotalByPeriod('year', currentYear);
-  }
-
-  calculateTotalByPeriod(period: string, value: number): number {
-    let total = 0;
-
-    this.operationGroups.forEach((group) => {
-      total += group.operations
-        .filter((operation) => this.isInPeriod(operation.timestamp, period, value))
-        .reduce((sum, operation) => sum + operation.amount, 0);
+    this.operationGroups.forEach((operate) => {
+      if (operate.title == "Dépenses") {
+        this.dayTotals[0] = this.calculateTotalByPeriod('day', operate);
+        this.weekTotals[0] = this.calculateTotalByPeriod('week', operate);
+        this.monthTotals[0] = this.calculateTotalByPeriod('month', operate);
+        this.yearTotals[0] = this.calculateTotalByPeriod('year', operate);
+      } else if (operate.title == "Recettes") {
+        this.dayTotals[1] = this.calculateTotalByPeriod('day', operate);
+        this.weekTotals[1] = this.calculateTotalByPeriod('week', operate);
+        this.monthTotals[1] = this.calculateTotalByPeriod('month', operate);
+        this.yearTotals[1] = this.calculateTotalByPeriod('year', operate);
+      } else if (operate.title == "Emprunts") {
+        this.dayTotals[2] = this.calculateTotalByPeriod('day', operate);
+        this.weekTotals[2] = this.calculateTotalByPeriod('week', operate);
+        this.monthTotals[2] = this.calculateTotalByPeriod('month', operate);
+        this.yearTotals[2] = this.calculateTotalByPeriod('year', operate);
+      } else if (operate.title == "Prets") {
+        this.dayTotals[3] = this.calculateTotalByPeriod('day', operate);
+        this.weekTotals[3] = this.calculateTotalByPeriod('week', operate);
+        this.monthTotals[3] = this.calculateTotalByPeriod('month', operate);
+        this.yearTotals[3] = this.calculateTotalByPeriod('year', operate);
+      } else if (operate.title == "Epargnes") {
+        this.dayTotals[4] = this.calculateTotalByPeriod('day', operate);
+        this.weekTotals[4] = this.calculateTotalByPeriod('week', operate);
+        this.monthTotals[4] = this.calculateTotalByPeriod('month', operate);
+        this.yearTotals[4] = this.calculateTotalByPeriod('year', operate);
+      }
     });
 
-    return total;
+    for (let index = 0; index < 5; index++) {
+      console.log(`${this.operationGroups[index].title} : day= ${this.dayTotals[index]}, week= ${this.weekTotals[index]}, month= ${this.monthTotals[index]}, year= ${this.yearTotals[index]}`);
+    }
   }
 
-  isInPeriod(timestamp: number, period: string, value: number): boolean {
+  calculateMoney(period: string, value: number): number {
+    let wallet = 0;
+
+    const currentYear = new Date().getFullYear();
+
+    this.operationGroups.forEach((group) => {
+      if (group.title == "Recettes" || group.title == "Emprunts") {
+        wallet += group.operations
+          .filter((operation) => this.isInPeriod(operation.timestamp, period, value, currentYear))
+          .reduce((sum, operation) => sum + operation.amount, 0);
+      } else if (group.title == "Dépenses" || group.title == "Prets" || group.title == "Epargnes") {
+        wallet -= group.operations
+          .filter((operation) => this.isInPeriod(operation.timestamp, period, value, currentYear))
+          .reduce((sum, operation) => sum + operation.amount, 0); // Always subtract
+      }
+    });
+
+    return wallet;
+  }
+
+
+
+
+  isInPeriod(timestamp: number, period: string, value: number, year: number): boolean {
     const operationDate = new Date(timestamp);
 
     switch (period) {
       case 'day':
-        return operationDate.getDate() === value;
+        return operationDate.getDate() === value && operationDate.getFullYear() === year;
       case 'week':
-        return this.getWeekNumber(operationDate) === value;
+        return this.getWeekNumber(operationDate) === value && operationDate.getFullYear() === year;
       case 'month':
-        return operationDate.getMonth() === value;
+        return operationDate.getMonth() === value && operationDate.getFullYear() === year;
       case 'year':
-        return operationDate.getFullYear() === value;
+        return operationDate.getFullYear() === year;
       default:
         return false;
     }
   }
+
 
   getWeekNumber(date: Date): number {
     const start = new Date(date.getFullYear(), 0, 0);
@@ -91,4 +188,16 @@ export class HomePage {
     return this.operationGroups.some((group) => group.operations.length > 0);
   }
 
+
+  recalculateWalletScore() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    this.score =
+      this.calculateMoney('day', currentDate.getDate()) +
+      this.calculateMoney('week', this.getWeekNumber(currentDate)) +
+      this.calculateMoney('month', currentDate.getMonth()) +
+      this.calculateMoney('year', currentYear);
+
+  }
 }

@@ -12,10 +12,10 @@ const routes: Routes = [
           import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
-        path: 'statistic',
+        path: 'statistics',
         loadChildren: () =>
-          import('../statistic/statistic.module').then(
-            (m) => m.StatisticPageModule
+          import('../statistics/statistics.module').then(
+            (m) => m.StatisticsPageModule
           ),
       },
 
