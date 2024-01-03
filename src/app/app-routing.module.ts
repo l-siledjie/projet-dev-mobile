@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IntroductionPage } from './pages/introduction/introduction.page';
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'introduction',
     pathMatch: 'full'
   },
 
@@ -37,6 +38,11 @@ const routes: Routes = [
     path: 'statistics',
     loadChildren: () => import('./pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
   },
+  {
+    path: 'introduction',
+    loadChildren: () => import('./pages/introduction/introduction.module').then( m => m.IntroductionPageModule)
+  },
+
 
 ];
 

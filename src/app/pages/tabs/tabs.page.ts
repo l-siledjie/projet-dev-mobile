@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { IonModal, ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
-import { OperationService } from '../../services/operation.service';
+import { OperationService } from 'src/app/services/operation.service';
 
 @Component({
   selector: 'app-tabs',

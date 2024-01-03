@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-import { AuthentificationService } from 'src/app/services/authentification.service';
+import { AuthentificationService } from  'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-signup',

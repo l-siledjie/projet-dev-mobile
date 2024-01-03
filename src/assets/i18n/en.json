@@ -1,0 +1,21 @@
+{
+  "TITLE": "Hello sir",
+  "TITLE_2": "Hello {{value}}",
+  "description": "Have you just translated this text?",
+  "data": {
+
+      "menu.dashboard": "Dashboard",
+      "menu.liveSessions": "Live sessions",
+      "menu.settings": "Settings",
+      "menu.about": "About",
+      "menu.logout": "Logout",
+      "menu.help": "Help",
+      "menu.contact": "Contact",
+      "wallet.title": "PORTE FEUILLE",
+      "wallet.totalScore": "Total Score",
+      "wallet.dailyTotal": "Total Journalier",
+      "wallet.weeklyTotal": "Total Hebdomadaire",
+      "wallet.monthlyTotal": "Total Mensuel",
+      "wallet.yearlyTotal": "Total Annuel"
+  }
+}

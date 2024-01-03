@@ -2,10 +2,13 @@
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
+
       </ion-buttons>
       <ion-title></ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="exportData()">Sauvegarder</ion-button>
+        <ion-button (click)="exportData()">
+          <ion-icon name="save"></ion-icon></ion-button>
+
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -13,50 +16,52 @@
   <ion-content class="container">
     <div class="row justify-content-center">
       <div class="col-md-8" slot="end">
-        <h5> PORTE FEUILLE <span class="card badge text-bg-secondary"> {{score}} </span></h5>
+        <ion-icon name="wallet-outline"></ion-icon>  {{score}}
       </div>
       <div class="col-md-8">
 
 
-  <table class="table" *ngIf="hasData()">
-    <tbody *ngFor="let operationGroup of operationGroups">
-      <tr>
-        <th colspan="3" class="table-active">{{ operationGroup.title }}</th>
-      </tr>
-      <tr *ngFor="let operation of operationGroup.operations">
-        <td><ion-icon [name]="operation.icon" class="mr-2"></ion-icon></td>
-        <td>{{ operation.label }}</td>
-        <td>{{ operation.amount }} <ion-note slot="end">{{ operation.timestamp | date: 'medium' }}</ion-note></td>
-      </tr>
-    </tbody>
-  </table>
+        <table class="table" *ngIf="hasData()">
+          <tbody *ngFor="let operationGroup of operationGroups">
+            <tr>
+              <th colspan="3" class="table-active">{{ operationGroup.title }}</th>
+            </tr>
+            <tr *ngFor="let operation of operationGroup.operations">
+              <td><ion-icon [name]="operation.icon" class="mr-2"></ion-icon></td>
+              <td>{{ operation.label }}</td>
+              <td>{{ operation.amount }} <ion-note slot="end">{{ operation.timestamp | date: 'medium' }}</ion-note></td>
+            </tr>
+          </tbody>
+        </table>
 
 
-  <table class="table">
-    <tbody>
-      <ng-container *ngFor="let operationGroup of operationGroups">
-        <tr>
-          <th colspan="2" class="table-active">{{ operationGroup.title }} Cumul</th>
-        </tr>
-        <tr>
-          <td>Total Journalier</td>
-          <td><ion-note slot="end">{{ calculateTotalByPeriod('day', operationGroup) }}</ion-note></td>
-        </tr>
-        <tr>
-          <td>Total Hebdomadaire</td>
-          <td><ion-note slot="end">{{ calculateTotalByPeriod('week', operationGroup) }}</ion-note></td>
-        </tr>
-        <tr>
-          <td>Total Mensuel</td>
-          <td><ion-note slot="end">{{ calculateTotalByPeriod('month', operationGroup) }}</ion-note></td>
-        </tr>
-        <tr>
-          <td>Total Annuel</td>
-          <td><ion-note slot="end">{{ calculateTotalByPeriod('year', operationGroup) }}</ion-note></td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+
+        <table class="table">
+          <tbody>
+            <ng-container *ngFor="let operationGroup of operationGroups">
+              <tr>
+                <th colspan="2" class="table-active">{{ operationGroup.title }} Cumul</th>
+              </tr>
+              <tr>
+                <td>Total Journalier</td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('day', operationGroup) }}</ion-note></td>
+              </tr>
+              <tr>
+                <td>Total Hebdomadaire</td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('week', operationGroup) }}</ion-note></td>
+              </tr>
+              <tr>
+                <td>Total Mensuel</td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('month', operationGroup) }}</ion-note></td>
+              </tr>
+              <tr>
+                <td>Total Annuel</td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('year', operationGroup) }}</ion-note></td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+
 
       </div>
     </div>
