@@ -22,6 +22,7 @@
 
 
         <table class="table" *ngIf="hasData()">
+          <ion-title>Mes Opérations </ion-title>
           <tbody *ngFor="let operationGroup of operationGroups">
             <tr>
               <th colspan="3" class="table-active">{{ operationGroup.title }}</th>
@@ -29,14 +30,13 @@
             <tr *ngFor="let operation of operationGroup.operations">
               <td><ion-icon [name]="operation.icon" class="mr-2"></ion-icon></td>
               <td>{{ operation.label }}</td>
-              <td>{{ operation.amount }} <ion-note slot="end">{{ operation.timestamp | date: 'medium' }}</ion-note></td>
+              <td>{{ operation.amount | currency:'XAF':'symbol':'1.0-0' }} <ion-note slot="end">{{ operation.timestamp | date: 'medium' }}</ion-note></td>
             </tr>
           </tbody>
         </table>
 
-
-
         <table class="table">
+          <ion-title >Cumuls</ion-title>
           <tbody>
             <ng-container *ngFor="let operationGroup of operationGroups">
               <tr>
@@ -44,25 +44,31 @@
               </tr>
               <tr>
                 <td>Total Journalier</td>
-                <td><ion-note slot="end">{{ calculateTotalByPeriod('day', operationGroup) }}</ion-note></td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('day', operationGroup) | currency:'XAF':'symbol':'1.0-0' }}</ion-note></td>
               </tr>
               <tr>
                 <td>Total Hebdomadaire</td>
-                <td><ion-note slot="end">{{ calculateTotalByPeriod('week', operationGroup) }}</ion-note></td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('week', operationGroup) | currency:'XAF':'symbol':'1.0-0' }}</ion-note></td>
               </tr>
               <tr>
                 <td>Total Mensuel</td>
-                <td><ion-note slot="end">{{ calculateTotalByPeriod('month', operationGroup) }}</ion-note></td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('month', operationGroup) | currency:'XAF':'symbol':'1.0-0' }}</ion-note></td>
               </tr>
               <tr>
                 <td>Total Annuel</td>
-                <td><ion-note slot="end">{{ calculateTotalByPeriod('year', operationGroup) }}</ion-note></td>
+                <td><ion-note slot="end">{{ calculateTotalByPeriod('year', operationGroup) | currency:'XAF':'symbol':'1.0-0' }}</ion-note></td>
               </tr>
             </ng-container>
           </tbody>
         </table>
 
 
+
+
       </div>
     </div>
+
   </ion-content>
+
+
+

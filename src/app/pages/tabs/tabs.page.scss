@@ -75,3 +75,12 @@
   top: 55px;
   left: 0;
   }
+
+  ion-toolbar{
+    --background: transparent;
+  --ion-color-base: transparent !important;
+  bottom: 0;
+  width: 100%;
+  --color: #b9b9b9;
+  border-top: none;
+  }

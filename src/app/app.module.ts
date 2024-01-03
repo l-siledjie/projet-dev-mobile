@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AngularFireModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgxChartsModule,
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

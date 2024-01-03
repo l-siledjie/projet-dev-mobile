@@ -1,6 +1,4 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+
 
 export const environment = {
   production: false,
@@ -11,7 +9,7 @@ export const environment = {
     storageBucket: "yokap-project-001.appspot.com",
     messagingSenderId: "48255114804",
     appId: "1:48255114804:web:03ccd81fb1d87a63b5f461"
-  }
+  },
 };
 
 /*

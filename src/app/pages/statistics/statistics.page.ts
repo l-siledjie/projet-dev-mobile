@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PieChartComponent } from 'src/app/components/pie-chart/pie-chart.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { PieChartComponent } from 'src/app/components/pie-chart/pie-chart.compon
 
 })
 export class StatisticsPage implements OnInit {
-
+  @Input() pieChartData: any[] = [];
   constructor() { }
 
   ngOnInit() {

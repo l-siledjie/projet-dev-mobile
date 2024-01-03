@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { saveAs } from 'file-saver';
 import { ToastController } from '@ionic/angular';
@@ -9,12 +9,14 @@ import { OperationService } from 'src/app/services/operation.service';
 
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   depenseOperations: any[] = [];
   recetteOperations: any[] = [];
   empruntOperations: any[] = [];
@@ -34,6 +36,8 @@ export class HomePage {
   yearTotals: number[] = [0, 0, 0, 0, 0];
   typeTotals: any = {};
 selectedLanguage: any;
+  pieChartData: { name: string; value: number; }[];
+
 
   constructor(private operationService: OperationService, private toastController: ToastController, private authService: GoogleDriveAuthService, private translate: TranslateService) {
     this.translate.setDefaultLang('fr');
@@ -42,6 +46,15 @@ selectedLanguage: any;
     this.translate.use(language);
   }
   ngOnInit() {
+  }
+  generatePieChartData() {
+    this.pieChartData = [
+      { "name": "Dépenses", "value": this.calculateMoney('day', new Date().getDate()) },
+      { "name": "Recettes", "value": this.calculateMoney('week', this.getWeekNumber(new Date())) },
+      { "name": "Emprunts", "value": this.calculateMoney('month', new Date().getMonth()) },
+      { "name": "Prets", "value": this.calculateMoney('year', new Date().getFullYear()) },
+      { "name": "Epargnes", "value": this.score },
+    ];
   }
   ionViewWillEnter() {
     this.loadOperations();
@@ -252,5 +265,8 @@ selectedLanguage: any;
       toast.present();
     }
   }
+
+  /////////////////////////////////
+
 }
 

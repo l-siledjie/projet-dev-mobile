@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
-import { IonModal, ModalController } from '@ionic/angular';
-import { IonicModule } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { OperationService } from 'src/app/services/operation.service';
 
 @Component({
@@ -13,20 +12,23 @@ export class TabsPage implements OnInit {
   operationLabel: string;
   amount: number;
 
+  constructor(private modalController: ModalController, private operationService: OperationService) {}
 
-  constructor( private modalController: ModalController, private operationService: OperationService  ) { }
-  @ViewChildren(IonModal) modal!:IonModal
   showGrid = false;
   is_open: boolean = false;
+
   openForm() {
     this.is_open = true;
   }
-  handleClose(even:any){
+
+  handleClose(event: any) {
     this.is_open = false;
   }
+
   onClose() {
     this.is_open = false;
-    this.modal.dismiss();
+    // Dismiss the modal using the modal controller
+    this.modalController.dismiss();
   }
 
   saveOperation() {
@@ -34,7 +36,5 @@ export class TabsPage implements OnInit {
     this.onClose();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
