@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomePage } from './pages/home/home.page';
-import { StatisticPage } from './pages/statistic/statistic.page';
 
 const routes: Routes = [
 
@@ -34,10 +32,6 @@ const routes: Routes = [
   {
     path:'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'statistic',
-    loadChildren: () => import('./pages/statistic/statistic.module').then( m => m.StatisticPageModule)
   },
   {
     path: 'statistics',
