@@ -1,0 +1,10 @@
+ion-content {
+    --background: url('/assets/icon/images/sea-wave-art-blue-background.jpg') no-repeat fixed center center / cover;
+    }
+ion-item{
+    --background:var(--background);
+}
+ion-button{
+    --background: var(--background) ;
+    color: black;
+}

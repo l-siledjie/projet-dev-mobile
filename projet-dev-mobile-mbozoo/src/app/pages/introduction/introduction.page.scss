@@ -1,0 +1,18 @@
+.container{
+  text-align: center;
+  margin-top: 50%;
+
+}
+.background-image {
+background: url('/assets/icon/images/landing.gif') no-repeat center center fixed;
+background-size: cover;
+background-position: center;
+height: 100vh; /* 100% de la hauteur de la vue */
+width: 100vw; /* 100% de la largeur de la vue */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-end;
+}
+
+

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Wimengo</string>
+    <string name="title_activity_main">Wimengo</string>
+    <string name="package_name">com.wimengo.app</string>
+    <string name="custom_url_scheme">com.wimengo.app</string>
+</resources>

@@ -1,0 +1,122 @@
+{
+  "operationGroups": [
+    {
+      "title": "Dépenses",
+      "operations": [
+        {
+          "id": 1,
+          "type": "depense",
+          "timestamp": "2023-12-27T10:27:55.538Z"
+        },
+        {
+          "id": 2,
+          "type": "depense",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:29:09.395Z"
+        },
+        {
+          "id": 3,
+          "type": "depense",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:34:36.808Z"
+        },
+        {
+          "id": 4,
+          "type": "depense",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:41:12.091Z"
+        },
+        {
+          "id": 5,
+          "type": "depense",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:56:50.592Z"
+        },
+        {
+          "id": 6,
+          "type": "depense",
+          "amount": 500,
+          "timestamp": "2024-01-02T01:14:32.191Z"
+        },
+        {
+          "id": 7,
+          "type": "depense",
+          "amount": 1000,
+          "timestamp": "2024-01-02T01:16:42.658Z"
+        }
+      ],
+      "icon": "wallet-outline"
+    },
+    {
+      "title": "Recettes",
+      "operations": [
+        {
+          "id": 1,
+          "type": "recette",
+          "amount": 25000,
+          "timestamp": "2024-01-01T16:31:21.707Z"
+        },
+        {
+          "id": 2,
+          "type": "recette",
+          "amount": 25000,
+          "timestamp": "2024-01-01T16:52:34.269Z"
+        },
+        {
+          "id": 3,
+          "type": "recette",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:43:10.591Z"
+        },
+        {
+          "id": 4,
+          "type": "recette",
+          "amount": 500,
+          "timestamp": "2024-01-02T00:50:22.654Z"
+        },
+        {
+          "id": 5,
+          "type": "recette",
+          "amount": 1000,
+          "timestamp": "2024-01-02T00:53:46.477Z"
+        },
+        {
+          "id": 6,
+          "type": "recette",
+          "amount": 500,
+          "timestamp": "2024-01-02T01:02:18.071Z"
+        }
+      ],
+      "icon": "cash-outline"
+    },
+    {
+      "title": "Emprunts",
+      "operations": [
+        {
+          "id": 1,
+          "type": "emprunt",
+          "amount": 2500,
+          "timestamp": "2024-01-01T16:35:16.294Z"
+        }
+      ],
+      "icon": "archive-outline"
+    },
+    {
+      "title": "Prets",
+      "operations": [
+        {
+          "id": 1,
+          "type": "pret",
+          "amount": 45000,
+          "timestamp": "2024-01-01T16:42:44.053Z"
+        }
+      ],
+      "icon": "card-outline"
+    },
+    {
+      "title": "Epargnes",
+      "operations": [],
+      "icon": "bag-check-outline"
+    }
+  ]
+}

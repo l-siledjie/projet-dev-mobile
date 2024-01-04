@@ -1,0 +1,58 @@
+<ion-tabs>
+  <ion-icon name="add-circle-outline" class="icon-button inner-center-btn"></ion-icon>
+  <ion-tab-bar slot="bottom" class="bottom-tab-bar">
+    <ion-tab-button tab="home" routerLink="/tabs/home" routerLinkActive="active">
+      <ion-icon name="reader-outline"></ion-icon>
+      <ion-label>Acceuil</ion-label>
+    </ion-tab-button>
+    <ion-tab-button class="button-center" (click)="openForm()">
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-modal [isOpen]="is_open" [breakpoints]="[0.25,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]" [initialBreakpoint]="0.75"
+        ionBackdropDismiss="true">
+        <ng-template #name>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="onClose()">
+                  <button type="button" class="btn-close" aria-label="Close"></button>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <form>
+              <ion-item>
+                <ion-select placeholder="Sélectionnez le type" [(ngModel)]="selectedType" name="selectedType"
+                  label="Type d'opération">
+                  <ion-select-option value="depense">Dépense</ion-select-option>
+                  <ion-select-option value="recette">Recette</ion-select-option>
+                  <ion-select-option value="emprunt">Emprunt</ion-select-option>
+                  <ion-select-option value="pret">Pret</ion-select-option>
+                  <ion-select-option value="epargne">Epargne</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item lines="full">
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Libellé de l'opération</label>
+                  <ion-textarea class="form-control" rows="3" [(ngModel)]="operationLabel" name="operationLabel"></ion-textarea>
+                </div>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-input label="Montant" type="number" [(ngModel)]="amount" name="amount"></ion-input>
+              </ion-item>
+              <ion-button expand="full" (click)="saveOperation()">Enregistrer</ion-button>
+            </form>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-tab-button>
+    <ion-tab-button tab="statistics" routerLink="/tabs/statistics" routerLinkActive="active">
+      <ion-icon name="pie-chart-outline"></ion-icon>
+      <ion-label>Statistiques</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

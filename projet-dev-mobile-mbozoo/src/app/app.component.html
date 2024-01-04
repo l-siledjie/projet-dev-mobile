@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-menu contentId="main-content" side="start" type="overlay">
+    <ion-content class="menu">
+      <div class="menu-header">
+        <div class="menu-header-bg"></div>
+        <div class="header-content">
+          <img src="assets/icon/images/001.png" alt="logo">
+          <ion-label>
+            <h2>William </h2>
+          </ion-label>
+        </div>
+      </div>
+
+      <ion-list class="menu-items" lines="none">
+        <ion-item routerLink="/tabs/home">
+          <ion-icon name="home-outline"></ion-icon>Accueil
+        </ion-item>
+         <ion-item routerLink="/tabs/statistics">
+          <ion-icon name="pie-chart-outline"></ion-icon>Statitics
+        </ion-item>
+        <ion-item>
+          <ion-icon name="settings" ></ion-icon>Settings
+        </ion-item>
+        <ion-item (click)="toggleBrightnessMode()">
+          <ion-icon name="sunny-outline" *ngIf="brightnessMode === 'dark'"></ion-icon>
+          <ion-icon name="moon-outline" *ngIf="brightnessMode === 'light'"></ion-icon>
+          {{ brightnessMode === 'dark' ? 'Mode Lumineux' : 'Mode Sombre' }}
+        </ion-item>
+        <ion-item>
+          <ion-button fill="clear" color="danger" routerLink="/landing">
+            <ion-icon name="exit-outline"></ion-icon>Exit</ion-button></ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+   <ion-app-home></ion-app-home>
+   <ion-app-statistics> </ion-app-statistics>
+   <ion-router-outlet id="main-content"></ion-router-outlet>
+   <ion-tabs></ion-tabs>
+</ion-app>
+
